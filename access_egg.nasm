@@ -15,7 +15,7 @@ iter_addr:
         cmp al, 0xf2		; check for EFAULT
         jz align_page           ; if zflag = 0 (EFAULT is returned), we need to skip this block (+0x1000 bytes)
         mov eax,0x90509051     ; mov egg key into eax
-	dec eax
+	dec eax		       ; key[] = 0x90509050
 	mov edi, edx
         scasd                   ; scasd will compare the contents stored in edi with eax (0x50905090)
 	jnz iter_addr           ; if the key is not found jump to the next address and compare
