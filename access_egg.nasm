@@ -16,7 +16,7 @@ check_addr:
     jz align_page           ; if zflag = 0 (EFAULT is returned), we need to skip this block
     mov eax,0x90509050      ; mov egg key into eax
     mov edi, edx            ; mov the address pointed by edx into edi
-    scasd                   ; scasd will compare the contents stored in edi with eax (0x50905090)
+    scasd                   ; scasd will compare the contents stored in edi with eax (0x90509050)
     jnz check_addr          ; if the key is not found jump to the next address and compare 
     scasd
     jnz check_addr          ; if the key is not found jump to the next address and compare 
