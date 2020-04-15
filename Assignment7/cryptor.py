@@ -12,7 +12,6 @@ parser.add_argument("-k", "--key", help="Input Secret Key")
 args = parser.parse_args()
 
 
-# AES divides blocks of 16 bytes in length before encrypting, to support code that is smaller then 16 bytes
 BS = 16
 pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()
 unpad = lambda s: s[:-ord(s[len(s)-1:])]
